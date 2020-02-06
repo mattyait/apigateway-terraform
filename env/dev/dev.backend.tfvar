@@ -1,0 +1,5 @@
+#==========Backend Variables==========
+region          = "ap-southeast-2"
+bucket          = "apigateway-terraformbackend-state"
+key             = "dev/state.tfstate"
+dynamo_db_lock  =   "apigateway-terraformstate-lock-dynamo"

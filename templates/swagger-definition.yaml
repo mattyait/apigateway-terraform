@@ -1,0 +1,53 @@
+openapi: 3.0.1
+info:
+  title: ${api_name}
+  description: ${description}
+  version: "1.0"
+servers:
+  - url: petstore.swagger.io
+tags:
+  - name: pet
+    description: Everything about your Pets
+    externalDocs:
+      description: Find out more
+      url: 'http://swagger.io'
+  - name: store
+    description: Access to Petstore orders
+  - name: user
+    description: Operations about user
+    externalDocs:
+      description: Find out more about our store
+      url: 'http://swagger.io'
+paths:
+  '/pet/{petId}':
+    get:
+      tags:
+        - pet
+      summary: Find pet by ID
+      description: Returns a single pet
+      operationId: getPetById
+      parameters:
+        - name: petId
+          in: path
+          description: ID of pet to return
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Pet not found
+      x-amazon-apigateway-integration:
+        uri: ${public_domain_name}/pet/{petId}
+        connectionType: ${connectionType}
+        passthroughBehavior: "when_no_match"
+        httpMethod: "GET"
+        type: ${type}
+        requestParameters:
+          integration.request.path.petId: "method.request.path.petId"
+components:
+  schemas:
+    Empty:
+      title: "Empty Schema"
+      type: "object"

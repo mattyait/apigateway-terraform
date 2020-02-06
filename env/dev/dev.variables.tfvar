@@ -1,0 +1,21 @@
+#==========Provider variables=====
+environment                     =   "dev"
+aws_profile                     =   "default"
+aws_region                      =   "ap-southeast-2"
+dynamo_db_lock                  =    "apigateway-terraformstate-lock-dynamo"
+
+#=======AWS API Variables======
+
+aws-api-gateway-name  = "Petstore"
+description = "Demo API to for petstore"
+swagger-file_path  = "../../templates/swagger-definition.yaml"
+
+integration_connectiontype = "INTERNET"
+integration_type = "http_proxy"
+public_domain_name = "https://petstore.swagger.io"
+
+
+api_gateway_whitelist_ips =  {
+                                "3.104.39.183/32"    = "ip to whitelist"
+                                "3.105.186.61/32"    = "ip to whitelist"
+                              }
